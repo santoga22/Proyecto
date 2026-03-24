@@ -29,6 +29,10 @@ public class Paciente {
     public String getUrgecia() {
         return urgencia;
     }
+
+    public String getId() {
+        return id;
+    }
     
     public String toArchivo(){
         return nombre + ";"+
