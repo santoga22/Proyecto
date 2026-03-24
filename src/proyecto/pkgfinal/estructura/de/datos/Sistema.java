@@ -15,6 +15,8 @@ public class Sistema {
     private Cola alta = new Cola(); // Módulo para poder encolar por orden de prioridades o urgencia
     private Cola media = new Cola();  // Nodo
     private Cola baja = new Cola();
+    private ListaAtencion enAtencion = new ListaAtencion();
+    private ListaHistorial historial = new ListaHistorial();
 
     public Sistema() {
         cargarPacientes();
@@ -60,6 +62,7 @@ public class Sistema {
         if (atendido != null){
             manejoArchivos.escribir("atendidos.txt", atendido.toArchivo()) ; 
             actualizarArchivoPt();
+            enAtencion.insertar(atendido);
                     }
         
         return atendido;
@@ -94,6 +97,15 @@ public class Sistema {
         
         
         manejoArchivos.reescribir(manejoArchivos.ArchivoPacientes, datos.toString());
+    }
+    
+    public Paciente Atencion(){
+        Paciente p = enAtencion.eliminarPrimero();
+        if (p != null){
+            historial.insertar(p);
+            manejoArchivos.escribir("Atendidos.txt", p.toArchivo());
+        }
+        return p;
     }
     
     private void cargarPacientes(){
