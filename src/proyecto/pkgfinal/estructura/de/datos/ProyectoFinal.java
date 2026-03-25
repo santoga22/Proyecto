@@ -34,7 +34,9 @@ public class ProyectoFinal {
                 MENU PRINCIPAL - Sistema Hospitalario
                 1 - Módulo de Emergencias
                 2 - Módulo de Farmacia
-                3 - Salir
+                3 - Historial Clínico
+                4 - Reportes Generales          
+                5 - Salir
                 """;
            
            try {
@@ -50,11 +52,20 @@ public class ProyectoFinal {
                    case 2:
                        farmacia();
                        break;
+                       
+                   case 3:
+                       JOptionPane.showMessageDialog(null, "Menú en desarrollo");
+                       break;
+                       
+                   case 4:
+                       JOptionPane.showMessageDialog(null, "Menú en desarrollo");
+                       break;
+                                                                              
                     
                    default:
                        JOptionPane.showMessageDialog(null, "Opción no válida");
                        
-                   case 3:
+                   case 5:
                        JOptionPane.showMessageDialog(null, "Saliendo");
                        break;
                         
@@ -63,7 +74,7 @@ public class ProyectoFinal {
                JOptionPane.showMessageDialog(null, "Entrada inválida");
                opcion=0;
            }
-        }while (opcion!=3);       
+        }while (opcion!=4);       
     }
 
     
@@ -74,10 +85,12 @@ public class ProyectoFinal {
            String menu =  """
                 MENU PARA PACIENTES EN EMERGENCIAS
                 1 - Registro de Pacientes
-                2 - Atender Paciente
+                2 - Atender Paciente en pre-consulta
                 3 - Mostrar colas de pacientes
-                4 - Finalizar Atencion         
-                5 - Volver al Menú Principal
+                4 - Atender Pacientes valorados por prioridad 
+                5 - Ver pacientes en atención pendiente
+                6 - Ver historial de pacientes atendidos          
+                7 - Volver al Menú Principal
                 """;
            
            try {
@@ -106,9 +119,14 @@ public class ProyectoFinal {
                        }else {
                            JOptionPane.showMessageDialog(null, "No hay pacientes en atencion.");
                        }
-                       break;                       
+                       break;   
                        
-                    case 5:
+                   case 5:
+                        JOptionPane.showMessageDialog(null, sistema.mostrarListaAtencion());
+                         
+                   case 6:
+                        JOptionPane.showMessageDialog(null, sistema.mostrarListaHistorial());
+                    case 7:
                        JOptionPane.showMessageDialog(null, "Volviendo al Menú Principal");
                        break;
 
@@ -120,7 +138,7 @@ public class ProyectoFinal {
                JOptionPane.showMessageDialog(null, "Entrada inválida");
                opcion=0;
            }
-        }while (opcion!=5);      
+        }while (opcion!=7);      
     }
         
         
