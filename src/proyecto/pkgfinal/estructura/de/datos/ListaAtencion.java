@@ -39,12 +39,25 @@ public class ListaAtencion {
         return null;
     }
     
+        public String toArchivo(){
+        String r = "";
+        NodoPaciente aux = inicio;
+        while(aux != null){
+            Paciente p = aux.getDato();
+            r += p.toArchivo() + "\n";
+            aux = aux.getSig();
+            
+        }
+        return r;
+
+    }
+    
         @Override
     public String toString() {
         String r="";
         NodoPaciente aux=inicio;
         while(aux!=null){
-            r+=aux+"\n";
+            r+=aux.getDato()+"\n";
             aux=aux.getSig();
         }
         return r;

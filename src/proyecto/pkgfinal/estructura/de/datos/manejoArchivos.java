@@ -19,7 +19,9 @@ public class manejoArchivos {
     public static String ArchivoPacientes = "pacientes.txt";
     public static String ArchivoAtendidos = "atendidos.txt";
     public static String ArchivoRecetas = "recetas.txt";
-
+    public static String ArchivoEnAtencion = "en_atencion.txt";
+    public static String ArchivoHistorial= "historial.txt";
+    
     public static void escribir(String nombreArchivo, String info) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo, true))) {

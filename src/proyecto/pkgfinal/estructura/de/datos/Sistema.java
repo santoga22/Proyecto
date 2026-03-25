@@ -51,22 +51,31 @@ public class Sistema {
     public Paciente atenderPaciente(){
         Paciente atendido = null;
         
-        if (!alta.esVacia())
+        if (!alta.esVacia()) {
             atendido = alta.desencolar();
-        
-        else  if (!media.esVacia())
-            atendido =  media.desencolar();    
-
-        else if (!baja.esVacia())
-            atendido =  baja.desencolar(); 
-        if (atendido != null){
-            manejoArchivos.escribir("atendidos.txt", atendido.toArchivo()) ; 
-            actualizarArchivoPt();
+        } else if (!media.esVacia()) {
+            atendido = media.desencolar();
+        } else if (!baja.esVacia()) {
+            atendido = baja.desencolar();
+        }
+        if (atendido != null) {
             enAtencion.insertar(atendido);
-                    }
-        
-        return atendido;
+
+            manejoArchivos.reescribir(
+                    manejoArchivos.ArchivoEnAtencion,
+                    enAtencion.toArchivo()
+            );
+
+            actualizarArchivoPt();
+        }
+
+        return atendido; 
     }
+
+
+    
+    
+    
     
     public void subirReceta(Receta r){ // Usa el apliar
         farmacia.apilar(r);
@@ -103,15 +112,22 @@ public class Sistema {
         Paciente p = enAtencion.eliminarPrimero();
         if (p != null){
             historial.insertar(p);
-            manejoArchivos.escribir("Atendidos.txt", p.toArchivo());
+            manejoArchivos.reescribir(manejoArchivos.ArchivoEnAtencion, enAtencion.toArchivo());
+            manejoArchivos.reescribir(manejoArchivos.ArchivoHistorial, historial.toArchivo());       
         }
         return p;
     }
         public String mostrarListaAtencion(){
+            if (enAtencion.esVacia()){
+                return "No hay pacientes en atención pendiente";
+            }
         return enAtencion.toString();
     }
     
       public String mostrarListaHistorial(){
+            if (historial.esVacia()){
+                return "No hay pacientes en atención pendiente";
+            }          
         return historial.toString();
     }  
 

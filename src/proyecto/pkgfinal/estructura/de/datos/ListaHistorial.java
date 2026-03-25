@@ -31,6 +31,19 @@ public class ListaHistorial {
         
     }
     
+        public String toArchivo(){
+        String r = "";
+        NodoPaciente aux = inicio;
+        while(aux != null){
+            Paciente p = aux.getDato();
+            r += p.toArchivo() + "\n";
+            aux = aux.getSig();
+            
+        }
+        return r;
+
+    }
+    
     @Override
     public String toString(){
         String r = "";

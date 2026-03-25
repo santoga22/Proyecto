@@ -74,7 +74,7 @@ public class ProyectoFinal {
                JOptionPane.showMessageDialog(null, "Entrada inválida");
                opcion=0;
            }
-        }while (opcion!=4);       
+        }while (opcion!=5);       
     }
 
     
