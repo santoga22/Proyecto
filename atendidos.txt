@@ -3,3 +3,7 @@ Marco;4250152132;25;Gripe;ALTA;10:30
 Juan;52546469;78;Rinitis;ALTA;7
 Marco;246464646;45;Gripe;MEDIA;9
 Lando;646643;25;Emergencia;ALTA;7
+Mateo;056456;25;Gripe;ALTA;10
+Juan;02;32;Mareo;MEDIA;5
+Mateo;056456;25;Gripe;ALTA;10
+Juan;02;32;Mareo;MEDIA;5

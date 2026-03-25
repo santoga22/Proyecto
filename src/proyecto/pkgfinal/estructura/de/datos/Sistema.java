@@ -107,7 +107,14 @@ public class Sistema {
         }
         return p;
     }
+        public String mostrarListaAtencion(){
+        return enAtencion.toString();
+    }
     
+      public String mostrarListaHistorial(){
+        return historial.toString();
+    }  
+
     private void cargarPacientes(){
         String datos = manejoArchivos.consultar(manejoArchivos.ArchivoPacientes);
         
@@ -144,6 +151,8 @@ public class Sistema {
         
     }
             }
+    
+    
 
     @Override
     public String toString() {
