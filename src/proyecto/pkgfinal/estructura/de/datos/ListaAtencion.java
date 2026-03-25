@@ -34,6 +34,10 @@ public class ListaAtencion {
         if(!esVacia()){
             Paciente p = inicio.getDato();
             inicio = inicio.getSig();
+            
+            if (inicio == null){
+                fin = null;
+            }
             return p;
         }
         return null;

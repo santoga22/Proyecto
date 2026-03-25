@@ -237,7 +237,7 @@ public class Sistema {
         for (String linea : lineas) {
             String[] info = linea.split(";");
 
-            if (info.length == 6) {
+            if (info.length == 3) {
                 Receta r = new Receta(
                         info[0],
                         info[1],
