@@ -50,13 +50,13 @@ public class ProyectoFinal {
                    case 2:
                        farmacia();
                        break;
+                    
+                   default:
+                       JOptionPane.showMessageDialog(null, "Opción no válida");
                        
                    case 3:
                        JOptionPane.showMessageDialog(null, "Saliendo");
                        break;
-
-                   default:
-                       JOptionPane.showMessageDialog(null, "Opción no válida");
                         
                }
            }catch(Exception e){
@@ -76,7 +76,8 @@ public class ProyectoFinal {
                 1 - Registro de Pacientes
                 2 - Atender Paciente
                 3 - Mostrar colas de pacientes
-                4 - Volver al Menú Principal
+                4 - Finalizar Atencion         
+                5 - Volver al Menú Principal
                 """;
            
            try {
@@ -97,8 +98,17 @@ public class ProyectoFinal {
                        JOptionPane.showMessageDialog(null,
                                 sistema.toString());
                        break;
+
+                   case 4:
+                       Paciente atendido = sistema.Atencion();
+                       if (atendido != null) {
+                           JOptionPane.showMessageDialog(null, "Paciente atendido: " + atendido);
+                       }else {
+                           JOptionPane.showMessageDialog(null, "No hay pacientes en atencion.");
+                       }
+                       break;                       
                        
-                    case 4:
+                    case 5:
                        JOptionPane.showMessageDialog(null, "Volviendo al Menú Principal");
                        break;
 
@@ -110,7 +120,7 @@ public class ProyectoFinal {
                JOptionPane.showMessageDialog(null, "Entrada inválida");
                opcion=0;
            }
-        }while (opcion!=4);      
+        }while (opcion!=5);      
     }
         
         
