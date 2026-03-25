@@ -20,6 +20,9 @@ public class Sistema {
 
     public Sistema() {
         cargarPacientes();
+        cargarRecetas();
+        cargarEnAtencion();
+        cargarHistorial();        
     }
     
     private PilaRecetas farmacia = new PilaRecetas(); // Pila
@@ -168,8 +171,86 @@ public class Sistema {
     }
             }
     
-    
+    private void cargarEnAtencion() {
+        String datos = manejoArchivos.consultar(manejoArchivos.ArchivoEnAtencion);
 
+        if (datos == null || datos.isEmpty()) {
+            return;
+        }
+        String[] lineas = datos.split("\n");
+
+        for (String linea : lineas) {
+            String[] info = linea.split(";");
+
+            if (info.length == 6) {
+                Paciente p = new Paciente(
+                        info[0],
+                        info[1],
+                        Integer.parseInt(info[2]),
+                        info[3],
+                        info[4],
+                        info[5]
+                );
+
+                enAtencion.insertar(p);
+            }
+
+        }
+    }
+
+    private void cargarHistorial() {
+        String datos = manejoArchivos.consultar(manejoArchivos.ArchivoHistorial);
+
+        if (datos == null || datos.isEmpty()) {
+            return;
+        }
+        String[] lineas = datos.split("\n");
+
+        for (String linea : lineas) {
+            String[] info = linea.split(";");
+
+            if (info.length == 6) {
+                Paciente p = new Paciente(
+                        info[0],
+                        info[1],
+                        Integer.parseInt(info[2]),
+                        info[3],
+                        info[4],
+                        info[5]
+                );
+
+                historial.insertar(p);
+            }
+
+        }
+    }    
+
+    
+    private void cargarRecetas() {
+        String datos = manejoArchivos.consultar(manejoArchivos.ArchivoRecetas);
+
+        if (datos == null || datos.isEmpty()) {
+            return;
+        }
+        String[] lineas = datos.split("\n");
+
+        for (String linea : lineas) {
+            String[] info = linea.split(";");
+
+            if (info.length == 6) {
+                Receta r = new Receta(
+                        info[0],
+                        info[1],
+                        info[2]
+
+                );
+
+                farmacia.apilar(r);
+            }
+
+        }
+    }  
+    
     @Override
     public String toString() {
         return "--- Urgencia Alta ---\n" + alta +
