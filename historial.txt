@@ -1,2 +1,3 @@
 Juan Pereira;1564646;52;Derrame;ALTA;07
 Francisco García;6046046;7;Gripe;BAJA;6
+Manuel Sáenz;065636320;74;Mareos;ALTA;7

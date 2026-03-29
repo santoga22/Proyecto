@@ -123,9 +123,10 @@ public class ProyectoFinal {
                        
                    case 5:
                         JOptionPane.showMessageDialog(null, sistema.mostrarListaAtencion());
-                         
+                        break;                        
                    case 6:
                         JOptionPane.showMessageDialog(null, sistema.mostrarListaHistorial());
+                       break;                        
                     case 7:
                        JOptionPane.showMessageDialog(null, "Volviendo al Menú Principal");
                        break;
