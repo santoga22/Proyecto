@@ -133,6 +133,10 @@ public class Sistema {
             }          
         return historial.toString();
     }  
+    
+    public Paciente buscarPacienteID(String id){
+        return enAtencion.buscarId(id);
+    }  
 
     private void cargarPacientes(){
         String datos = manejoArchivos.consultar(manejoArchivos.ArchivoPacientes);

@@ -43,6 +43,17 @@ public class ListaAtencion {
         return null;
     }
     
+    public Paciente buscarId(String id){
+        NodoPaciente aux = inicio;
+        while(aux!=null){
+            if (aux.getDato().getId().equals(id)){
+                return aux.getDato();
+            }
+            aux=aux.getSig();
+        }
+        return null;
+    }
+    
         public String toArchivo(){
         String r = "";
         NodoPaciente aux = inicio;

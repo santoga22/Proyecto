@@ -34,6 +34,10 @@ public class Paciente {
         return id;
     }
     
+    public String getNombre() {
+        return nombre;
+    }    
+    
     public String toArchivo(){
         return nombre + ";"+
                id + ";" +

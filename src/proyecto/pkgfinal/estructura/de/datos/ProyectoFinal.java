@@ -5,7 +5,8 @@
 package proyecto.pkgfinal.estructura.de.datos;
 
 import javax.swing.JOptionPane;
-
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 //proyecto final
 /**
  *
@@ -151,7 +152,10 @@ public class ProyectoFinal {
         int edad = Integer.parseInt(JOptionPane.showInputDialog("Edad:"));        
         String motivo = JOptionPane.showInputDialog("Motivo:");        
         String urgencia = JOptionPane.showInputDialog("Nivel de urgencia (ALTA, MEDIA, BAJA):").toUpperCase();
-        String hora = JOptionPane.showInputDialog("Hora de llegada:");
+        LocalTime horaSistema = LocalTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
+        String hora = horaSistema.format(formato);
+        
         
         if (!urgencia.equals("ALTA") &&
             !urgencia.equals("MEDIA") &&    
@@ -208,13 +212,21 @@ public class ProyectoFinal {
                
                switch(opcion){
                    case 1:
-                       String id = JOptionPane.showInputDialog("ID (cédula) del paciente: ");
-                       String nombre = JOptionPane.showInputDialog("Nombre del paciente: ");                       
-                       String medicamento = JOptionPane.showInputDialog("Medicamento(s) recetados al paciente: ");
+                       String id = JOptionPane.showInputDialog("Ingrese ID del paciente en atención: ");
+                       Paciente paciente = sistema.buscarPacienteID(id);
                        
-                       Receta r = new Receta(id, nombre, medicamento);
+                       if (paciente == null){
+                           JOptionPane.showMessageDialog(null, "Paciente no está registrado en atención, Intente nuevamente");
+                           break;
+                       }
+                       String medicamento = JOptionPane.showInputDialog("Medicamento(s) recetados al paciente: ");
+                       Receta r = new Receta(
+                               paciente.getId(),
+                               paciente.getNombre(),
+                               medicamento
+                       );
                        sistema.subirReceta(r);
-                       JOptionPane.showMessageDialog(null, "Receta Agregada a la Pila");
+                       JOptionPane.showMessageDialog(null,"Receta agregada correctamente");
                        
                        break;
                        
