@@ -17,12 +17,15 @@ public class Sistema {
     private Cola baja = new Cola();
     private ListaAtencion enAtencion = new ListaAtencion();
     private ListaHistorial historial = new ListaHistorial();
-
+    private ArbolPacientes arbol = new ArbolPacientes(); // atributo arbol
+    
+    
     public Sistema() {
         cargarPacientes();
         cargarRecetas();
         cargarEnAtencion();
-        cargarHistorial();        
+        cargarHistorial();
+        cargarArbol();
     }
     
     private PilaRecetas farmacia = new PilaRecetas(); // Pila
@@ -115,8 +118,11 @@ public class Sistema {
         Paciente p = enAtencion.eliminarPrimero();
         if (p != null){
             historial.insertar(p);
+            arbol.insertar(p); // inserta al arbol
+
             manejoArchivos.reescribir(manejoArchivos.ArchivoEnAtencion, enAtencion.toArchivo());
-            manejoArchivos.reescribir(manejoArchivos.ArchivoHistorial, historial.toArchivo());       
+            manejoArchivos.reescribir(manejoArchivos.ArchivoHistorial, historial.toArchivo());              
+            manejoArchivos.reescribir(manejoArchivos.ArchivoArbol, arbol.toArchivo());     
         }
         return p;
     }
@@ -253,7 +259,45 @@ public class Sistema {
             }
 
         }
-    }  
+    }
+    
+      private void cargarArbol() {
+        String datos = manejoArchivos.consultar(manejoArchivos.ArchivoArbol);
+
+        if (datos == null || datos.isEmpty()) {
+            return;
+        }
+        String[] lineas = datos.split("\n");
+
+        for (String linea : lineas) {
+            String[] info = linea.split(";");
+
+            if (info.length == 6) {
+                Paciente p = new Paciente(
+                        info[0],
+                        info[1],
+                        Integer.parseInt(info[2]),
+                        info[3],
+                        info[4],
+                        info[5]
+
+                );
+
+                arbol.insertar(p);
+            }
+
+        }
+    }
+      
+    
+    public String mostrarArbol(){
+        return arbol.inOrden();
+       
+    }
+    
+    public Paciente buscarEnArbol(String id){
+        return arbol.buscar(id);
+    }
     
     @Override
     public String toString() {

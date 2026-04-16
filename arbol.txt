@@ -1,0 +1,1 @@
+Nombre: Juan Gonzáles| ID: 1| Edad: 25| Motivo de consulta: Mareos| Nivel de Urgencia: ALTA| Hora: 22:20

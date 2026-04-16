@@ -3,3 +3,4 @@ Francisco García;6046046;7;Gripe;BAJA;6
 Manuel Sáenz;065636320;74;Mareos;ALTA;7
 Juan Garcia;46466316;54;Gripe;ALTA;7
 Santiago;12;22;Gripe;ALTA;19:32
+Juan Gonzáles;1;25;Mareos;ALTA;22:20

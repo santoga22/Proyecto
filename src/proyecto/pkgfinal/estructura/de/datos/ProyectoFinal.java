@@ -55,7 +55,7 @@ public class ProyectoFinal {
                        break;
                        
                    case 3:
-                       JOptionPane.showMessageDialog(null, "Menú en desarrollo");
+                       historial();
                        break;
                        
                    case 4:
@@ -191,6 +191,54 @@ public class ProyectoFinal {
                     "No hay pacientes en espera");            
         }
     }
+    
+    private void historial(){
+        int opcion;
+        do {
+           String menu =  """
+                Historial Clínico de pacientes atendidos
+                1 - Mostrar pacientes
+                2 - Buscar pacientes por ID
+                3 - Volver
+                """;
+           
+           try {
+               opcion = Integer.parseInt(
+                       JOptionPane.showInputDialog(null, menu)
+                );
+               
+               switch (opcion) {
+                   case 1:
+                       JOptionPane.showMessageDialog(null, sistema.mostrarArbol());
+                       break;
+
+                   case 2:
+                       String id = JOptionPane.showInputDialog("Ingrese ID: ");
+                       Paciente p = sistema.buscarEnArbol(id);
+
+                       if (p != null) {
+
+                           JOptionPane.showMessageDialog(null, p);
+                       } else {
+                           JOptionPane.showMessageDialog(null, "Paciente no fue encontrado con ID ingresado");
+                       }
+                       break;
+
+                   case 3:
+                       JOptionPane.showMessageDialog(null,
+                               sistema.mostrarRecetas());
+                       break;
+
+                   default:
+                       JOptionPane.showMessageDialog(null, "Opción no válida");
+
+               }
+           }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Entrada inválida");
+               opcion=0;
+           }
+        }while (opcion!=3);       
+    }                
     
     
     private void farmacia(){
