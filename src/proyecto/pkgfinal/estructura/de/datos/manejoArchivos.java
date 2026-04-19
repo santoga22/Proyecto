@@ -22,6 +22,7 @@ public class manejoArchivos {
     public static String ArchivoEnAtencion = "en_atencion.txt";
     public static String ArchivoHistorial= "historial.txt";
     public static String ArchivoArbol = "arbol.txt";
+    public static String ArchivoHistorialRecetas = "historial_recetas.txt";
     
     public static void escribir(String nombreArchivo, String info) {
 
@@ -51,7 +52,7 @@ public class manejoArchivos {
                 contenido.append(linea).append("\n");         
             }
         } catch (IOException e) {
-            return ("Error al leer el archivo: " + e.getMessage());
+                return "";
         }
         return contenido.toString();
     }

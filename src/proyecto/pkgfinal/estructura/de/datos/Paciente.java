@@ -16,6 +16,15 @@ public class Paciente {
     private String motivo;
     private String urgencia;
     private String hora;
+    private String horaAtencion;
+
+    public void setHoraAtencion(String horaAtencion) {
+        this.horaAtencion = horaAtencion;
+    }
+
+    public String getHoraAtencion() {
+        return horaAtencion;
+    }
 
     public Paciente(String nombre, String id, int edad, String motivo, String urgecia, String hora) {
         this.nombre = nombre;
@@ -38,24 +47,26 @@ public class Paciente {
         return nombre;
     }    
     
-    public String toArchivo(){
-        return nombre + ";"+
-               id + ";" +
-               edad + ";" +
-               motivo + ";" +
-               urgencia + ";" +
-               hora;
+    public String toArchivo() {
+        return nombre + ";"
+                + id + ";"
+                + edad + ";"
+                + motivo + ";"
+                + urgencia + ";"
+                + hora + ";"
+                + (horaAtencion != null ? horaAtencion : "");
     }
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre +
-                "| ID: " + id +
-                "| Edad: " + edad +
-                "| Motivo de consulta: " + motivo +
-                "| Nivel de Urgencia: " + urgencia +
-                "| Hora: " + hora;
+        return "Nombre: " + nombre
+                + "| ID: " + id
+                + "| Edad: " + edad
+                + "| Motivo de consulta: " + motivo
+                + "| Nivel de Urgencia: " + urgencia
+                + "| Hora: " + hora
+                + "| Hora atención: " + (horaAtencion != null ? horaAtencion : "Pendiente");
     }
-    
+
     
 }

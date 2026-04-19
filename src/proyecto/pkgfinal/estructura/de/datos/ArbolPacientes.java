@@ -62,7 +62,7 @@ public class ArbolPacientes {
         private void toArchivo(NodoArbol r, StringBuilder sb){
         if(r!=null){
             toArchivo(r.getIzq(),sb);
-            sb.append(r.getDato()).append("\n");
+            sb.append(r.getDato().toArchivo()).append("\n");
             toArchivo(r.getDer(),sb);
         }
     }

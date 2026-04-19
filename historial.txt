@@ -1,6 +1,8 @@
-Juan Pereira;1564646;52;Derrame;ALTA;07
-Francisco García;6046046;7;Gripe;BAJA;6
-Manuel Sáenz;065636320;74;Mareos;ALTA;7
-Juan Garcia;46466316;54;Gripe;ALTA;7
-Santiago;12;22;Gripe;ALTA;19:32
-Juan Gonzáles;1;25;Mareos;ALTA;22:20
+Juan Perez;1;24;Infarto;ALTA;20:07;20:11
+María Baggio;2;78;Gripe;MEDIA;20:08;20:11
+Matías Gimenez;3;58;mareos;BAJA;20:08;20:12
+Rodrigo Arias;4;78;Asma;ALTA;20:12;20:13
+Juana Lizandro;5;7;asma;ALTA;20:13;20:13
+Kaleb Isidro;6;87;Infarto;ALTA;20:27;20:28
+Lorena Sáenz;7;87;Derrame;ALTA;20:27;20:28
+Pedro Sánchez;8;7;Infección;BAJA;20:31;20:32

@@ -4,6 +4,8 @@
  */
 package proyecto.pkgfinal.estructura.de.datos;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 /**
  *
  * @author yeiko
@@ -65,6 +67,29 @@ public class ListaAtencion {
         }
         return r;
 
+    }
+        
+    public Paciente mayorEsperaActual(){ //pacientes que tienen mayor tiempo de espera y aun están en esperando atención al momento de consulta
+        NodoPaciente aux = inicio;
+        if(aux==null)return null;
+        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
+        
+        Paciente mayor = null;
+        int max = -1;  // crear registro de mayor espera, el max se va remplazando con el que tenga mas tiempo de espera
+        
+        while (aux != null){
+            Paciente p = aux.getDato();
+            LocalTime llegada = LocalTime.parse(p.toArchivo().split(";")[5], formato);  //se va a la linea 5 del p.toArchivo y saca la hora de ahi
+            int espera = LocalTime.now().toSecondOfDay() - llegada.toSecondOfDay();
+            
+            if (espera > max){
+                max = espera;
+                mayor = p;
+            }
+            aux = aux.getSig();
+        }
+        return mayor;
     }
     
         @Override
